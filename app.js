@@ -2,8 +2,8 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 //var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var FileStore = require('session-file-store')(session);
+//var session = require('express-session');
+//var FileStore = require('session-file-store')(session);
 var logger = require('morgan');
 var passport = require('passport');
 var authenticate = require('./authenticate');
@@ -46,16 +46,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //app.use(cookieParser('12345-98765-34567-21895'));
 
-app.use(session({
-  name: 'session-id',
-  secret: '12345-98765-34567-21895',
-  saveUninitialized: false,
-  resave: false,
-  store: new FileStore()
-}));
+// app.use(session({
+//   name: 'session-id',
+//   secret: '12345-98765-34567-21895',
+//   saveUninitialized: false,
+//   resave: false,
+//   store: new FileStore()
+// }));
 
 app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
